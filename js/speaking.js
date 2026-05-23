@@ -9,7 +9,7 @@ const SPEAKING = [
       "Mention a turning point: I started… and realized…",
       "Connect to the present: Now I enjoy…"
     ],
-    example: ""
+    example: "I've always been interested in technology. At some point I started learning web development and realized that I really enjoy solving problems with code. I like the fact that in IT you can see the result of your work quickly. Now I work as a frontend developer and I enjoy both the technical challenges and the creative side of building user interfaces."
   },
   {
     category: "Professional Background",
@@ -19,7 +19,7 @@ const SPEAKING = [
       "Add a key moment: At some point I realized…",
       "Connect to now: That's how I got into…"
     ],
-    example: ""
+    example: "I started learning web development on my own. I studied HTML, CSS and JavaScript, and at some point I decided to make it my profession. I took some courses, built my first projects and got my first job as a junior developer. That's how I got into frontend development. Now I work with React, TypeScript and SvelteKit."
   },
   {
     category: "Professional Background",
@@ -62,7 +62,7 @@ const SPEAKING = [
       "Name something specific: the variety of tasks / working with new technologies / collaborating with the team",
       "Add a reason: because it helps me… / because I get to…"
     ],
-    example: ""
+    example: "What I like most about my current position is the variety of tasks. I don't just write code — I also set up monitoring tools, integrate AI solutions and take part in planning architectural decisions. Besides, I really enjoy working with new technologies. It's important to me to grow professionally, and my current position gives me that opportunity."
   },
   {
     category: "Current Job",
@@ -72,7 +72,7 @@ const SPEAKING = [
       "Give evidence: For example, I… / Once I managed to…",
       "Connect to the job: which is important for… / that helps me…"
     ],
-    example: ""
+    example: "I would say my main strengths are responsibility and attention to detail. For example, I always try to complete my tasks on time and I don't miss deadlines. Besides, I tend to think beyond my own responsibilities — I am interested in backend and DevOps as well, which helps me to understand the project as a whole. I am also quite reliable — my colleagues rely on me when there is an urgent problem to solve."
   },
   {
     category: "Current Job",
@@ -105,7 +105,7 @@ const SPEAKING = [
       "Be realistic and positive: I'd like to grow into…",
       "Connect to the company: I believe this role would help me…"
     ],
-    example: ""
+    example: "In the short term I would like to grow as a senior frontend developer and improve my knowledge of DevOps and system design. In the long term I would like to take on more responsibility — perhaps move into a tech lead role. I believe that working on challenging projects and mentoring junior developers would help me to achieve this goal."
   },
   {
     category: "Future Plans",
@@ -115,7 +115,7 @@ const SPEAKING = [
       "Use: I plan to… / I am going to… / I would like to…",
       "Connect professional and personal if relevant"
     ],
-    example: ""
+    example: "In the short term I plan to improve my English and study Docker and Kubernetes more deeply. I am also going to continue working on my professional development — I read technical articles and take private English classes. In the long term I would like to grow into a more senior role and work on more complex architectural solutions. On the personal side, I would like to spend more time with my family and continue going to the gym."
   },
   {
     category: "Future Plans",
@@ -125,7 +125,7 @@ const SPEAKING = [
       "Mention the role: Ideally I would like to…",
       "Add what matters to you: It's important for me that…"
     ],
-    example: ""
+    example: "Ideally I would like to work in a company where I can work on interesting and challenging projects. It's important for me that the team is professional and that I have the opportunity to grow. I would like to work as a senior frontend developer with the possibility to take part in architectural decisions. Besides, I would like to have a fixed monthly rate and a stable schedule."
   },
   {
     category: "Future Plans",
@@ -136,7 +136,7 @@ const SPEAKING = [
       "Avoid: criticizing current employer",
       "⚠️ Teacher emphasized this is a very important question — prepare it well!"
     ],
-    example: ""
+    example: "I feel I am ready for new challenges. I have been working at my current company for some time and I have gained a lot of experience. However, I am looking for a position where I can grow further and work on more complex projects. I am also interested in working with an international team, which would help me to improve my English and develop professionally."
   },
 
   // ── FREE TIME ─────────────────────────────────────────────────────────────────
@@ -147,7 +147,7 @@ const SPEAKING = [
       "Start humbly: I don't have any special interests. It's standard things as for many people.",
       "Name activities: I spend my free time with my family. We… / Besides I like to…",
       "Add professional development at the end: Also I continue to work on…",
-      "Useful connector: 'Besides' = кроме того"
+      "Useful connector: 'Besides' = крім того"
     ],
     example: "I don't have any special interests. I can say it's standard things as for many people. I spend my free time with my family. Usually we go to different concerts — my daughter likes music, and we often have a walk around the central lake. Besides I like to read sci-fi. Recently I started going to the gym — I go twice a week. Also I continue to work on my professional development — I study DevOps tools and I work on improving my English."
   },
@@ -158,7 +158,7 @@ const SPEAKING = [
       "Books: name the genre + title + short description",
       "Use: 'This is about…' / 'It's a story about…'",
       "Movies: name genre + why you like it: I like thrillers with unexpected ending.",
-      "Useful: 'storyline' = сюжет, 'emotionally challenging' = эмоционально сложный",
+      "Useful: 'storyline' = сюжет, 'emotionally challenging' = емоційно складний",
       "Connector: 'While she was away' (don't drop the subject!)"
     ],
     example: "I like thrillers with unexpected endings. I can say I like difficult storylines and unusual solutions. For example, I like a series called 'His and Hers'. It's about a man and a woman who are married and they lost their baby. While she was away, her childhood friend was murdered. When she found out about this she came back to the town. It's quite emotionally challenging but I can definitely recommend it. As for books, I like sci-fi. The last book I read is from a series called 'Вне себя'. It's about the future when AI controls all people, and thanks to AI people won over death."
@@ -193,7 +193,7 @@ const SPEAKING = [
       "Use: I was interested in… / I liked the fact that… / I believe…",
       "Connect to your goals: I think this role would help me…"
     ],
-    example: ""
+    example: "I was interested in this company because of the projects you work on. I liked the fact that the company works with modern technologies and has interesting technical challenges. I believe that this role would help me to grow as a developer and gain new experience. Besides, I think this is a good match for my current skills and my future goals."
   },
   {
     category: "Practical Questions",

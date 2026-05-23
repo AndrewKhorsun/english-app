@@ -85,7 +85,7 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 /* SENTENCES */
 .sent-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 14px; }
 .sent-badge { display: inline-block; font-size: 11px; color: var(--accent2); background: #001a2a; padding: 3px 8px; border-radius: 20px; margin-bottom: 12px; }
-.sent-ru { font-size: 17px; line-height: 1.6; margin-bottom: 16px; }
+.sent-ua { font-size: 17px; line-height: 1.6; margin-bottom: 16px; }
 .sent-en { font-size: 15px; color: var(--accent2); background: #001220; border-radius: var(--radius-sm); padding: 12px 14px; display: none; line-height: 1.6; border-left: 3px solid var(--accent2); }
 .sent-en.show { display: block; }
 .sent-actions { display: flex; gap: 8px; }

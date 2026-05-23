@@ -145,7 +145,7 @@ function setSentFilter(f) {
 function renderSentence() {
   if (!sentFiltered.length) return;
   const s = sentFiltered[sentIndex];
-  document.getElementById('sent-ru').textContent = s.ru;
+  document.getElementById('sent-ua').textContent = s.ua;
   document.getElementById('sent-en').textContent = s.en;
   document.getElementById('sent-en').classList.remove('show');
   document.getElementById('sent-badge').textContent = s.set;
