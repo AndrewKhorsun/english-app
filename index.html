@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,149 +7,20 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="English">
 <meta name="theme-color" content="#0f0f0f">
-<meta name="description" content="Личная база знаний по английскому — слова, правила и предложения из пройденных уроков. Октябрь 2025 — Февраль 2026.">
+<meta name="description" content="Особиста база знань з англійської — слова, правила і речення з пройдених уроків.">
 <link rel="manifest" href="manifest.json">
 <title>English Practice</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #0f0f0f;
-  --bg2: #1a1a1a;
-  --bg3: #242424;
-  --border: #2e2e2e;
-  --text: #f0ede8;
-  --muted: #888;
-  --accent: #e8d5a3;
-  --accent2: #a3c4e8;
-  --accent3: #a3e8c4;
-  --danger: #e8a3a3;
-  --radius: 16px;
-  --radius-sm: 10px;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; font-size: 16px; }
-
-/* LAYOUT */
-.app { display: flex; flex-direction: column; height: 100dvh; max-width: 480px; margin: 0 auto; }
-.header { padding: 14px 20px 10px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); flex-shrink: 0; }
-.header-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -0.5px; color: var(--accent); }
-.header-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
-.progress-bar { height: 2px; background: var(--border); flex-shrink: 0; }
-.progress-fill { height: 100%; background: var(--accent); transition: width 0.4s ease; }
-.content { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 20px; -webkit-overflow-scrolling: touch; }
-.nav { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); flex-shrink: 0; }
-.nav-btn { padding: 12px 4px 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; border: none; background: none; color: var(--muted); font-size: 10px; font-family: 'Instrument Sans', sans-serif; transition: color 0.2s; }
-.nav-btn.active { color: var(--accent); }
-.nav-btn svg { width: 22px; height: 22px; }
-
-/* SCREENS */
-.screen { display: none; }
-.screen.active { display: block; }
-
-/* HOME */
-.home-greeting { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; line-height: 1.1; margin-bottom: 6px; }
-.home-greeting span { color: var(--accent); }
-.home-date { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
-.stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
-.stat-num { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--accent); line-height: 1; }
-.stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
-.section-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-.quick-btns { display: flex; flex-direction: column; gap: 8px; }
-.quick-btn { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
-.quick-btn:active { background: var(--bg3); }
-.quick-btn-left { display: flex; align-items: center; gap: 12px; }
-.quick-btn-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-.quick-btn-icon.y { background: #2a2200; color: var(--accent); }
-.quick-btn-icon.b { background: #001a2a; color: var(--accent2); }
-.quick-btn-icon.g { background: #00221a; color: var(--accent3); }
-.quick-btn-icon.r { background: #2a0000; color: var(--danger); }
-.quick-btn-text { font-size: 15px; font-weight: 500; }
-.quick-btn-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
-.arrow { color: var(--muted); font-size: 18px; }
-
-/* FLASHCARDS */
-.fc-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-.fc-count { font-family: 'Syne', sans-serif; font-size: 13px; color: var(--muted); }
-.fc-topic { font-size: 12px; color: var(--accent); background: #2a2200; padding: 4px 10px; border-radius: 20px; }
-.card-wrap { perspective: 1000px; margin-bottom: 16px; cursor: pointer; user-select: none; }
-.card-inner { position: relative; min-height: 220px; transition: transform 0.5s ease; transform-style: preserve-3d; }
-.card-wrap.flipped .card-inner { transform: rotateY(180deg); }
-.card-face { position: absolute; width: 100%; min-height: 220px; backface-visibility: hidden; border-radius: var(--radius); padding: 28px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border: 1px solid var(--border); }
-.card-front { background: var(--bg2); }
-.card-back { background: var(--bg3); transform: rotateY(180deg); }
-.card-word { font-family: 'Syne', sans-serif; font-size: 30px; font-weight: 800; color: var(--text); margin-bottom: 8px; line-height: 1.1; }
-.card-hint { font-size: 13px; color: var(--muted); }
-.card-translation { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 600; color: var(--accent); margin-bottom: 12px; line-height: 1.2; }
-.card-example { font-size: 13px; color: var(--muted); font-style: italic; line-height: 1.5; }
-.card-tap { font-size: 12px; color: var(--border); margin-top: 16px; }
-.fc-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-.btn { padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border); font-family: 'Instrument Sans', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; transition: all 0.15s; background: var(--bg2); color: var(--text); }
-.btn:active { transform: scale(0.97); }
-.btn.good { border-color: #3a5a3a; background: #0d200d; color: var(--accent3); }
-.btn.bad { border-color: #5a2a2a; background: #200d0d; color: var(--danger); }
-.btn.primary { border-color: #4a3a00; background: #1a1400; color: var(--accent); }
-.btn.full { grid-column: 1/-1; }
-.filter-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-.chip { padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border); font-size: 13px; cursor: pointer; color: var(--muted); background: var(--bg2); transition: all 0.15s; white-space: nowrap; }
-.chip.active { border-color: var(--accent); color: var(--accent); background: #1a1400; }
-.fc-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-.fc-bar-fill { height: 100%; background: var(--accent3); transition: width 0.4s; }
-
-/* SENTENCES */
-.sent-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 14px; }
-.sent-badge { display: inline-block; font-size: 11px; color: var(--accent2); background: #001a2a; padding: 3px 8px; border-radius: 20px; margin-bottom: 12px; }
-.sent-ru { font-size: 17px; line-height: 1.6; margin-bottom: 16px; }
-.sent-en { font-size: 15px; color: var(--accent2); background: #001220; border-radius: var(--radius-sm); padding: 12px 14px; display: none; line-height: 1.6; border-left: 3px solid var(--accent2); }
-.sent-en.show { display: block; }
-.sent-actions { display: flex; gap: 8px; }
-
-/* GRAMMAR */
-.grammar-list { display: flex; flex-direction: column; gap: 10px; }
-.rule-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-.rule-header { padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
-.rule-title { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600; }
-.rule-tag { font-size: 11px; color: var(--muted); background: var(--bg3); padding: 3px 8px; border-radius: 20px; }
-.rule-body { padding: 0 18px 18px; display: none; border-top: 1px solid var(--border); padding-top: 14px; }
-.rule-body.open { display: block; }
-.rule-explanation { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
-.rule-examples { display: flex; flex-direction: column; gap: 6px; }
-.rule-ex { font-size: 13px; padding: 8px 12px; background: var(--bg3); border-radius: var(--radius-sm); border-left: 2px solid var(--accent); line-height: 1.5; }
-.rule-ex em { color: var(--accent); font-style: normal; font-weight: 500; }
-.rule-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
-.rule-table th { text-align: left; color: var(--muted); font-weight: 500; padding: 6px 8px; border-bottom: 1px solid var(--border); }
-.rule-table td { padding: 6px 8px; border-bottom: 1px solid var(--border); color: var(--text); }
-.rule-table tr:last-child td { border-bottom: none; }
-
-/* QUIZ */
-.quiz-q { font-size: 17px; line-height: 1.5; margin-bottom: 20px; font-weight: 500; }
-.quiz-opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-.quiz-opt { padding: 14px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg2); font-size: 15px; cursor: pointer; text-align: left; color: var(--text); font-family: 'Instrument Sans', sans-serif; transition: all 0.15s; line-height: 1.4; }
-.quiz-opt:active:not(.locked) { transform: scale(0.98); }
-.quiz-opt.correct { border-color: #3a5a3a; background: #0d200d; color: var(--accent3); }
-.quiz-opt.wrong { border-color: #5a2a2a; background: #200d0d; color: var(--danger); }
-.quiz-opt.locked { cursor: default; }
-.quiz-note { font-size: 13px; color: var(--muted); background: var(--bg3); border-radius: var(--radius-sm); padding: 12px 14px; line-height: 1.6; margin-bottom: 14px; display: none; border-left: 2px solid var(--muted); }
-.quiz-note.show { display: block; }
-.quiz-score { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px; }
-.quiz-stat { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
-.quiz-stat-n { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; }
-.quiz-stat-n.ok { color: var(--accent3); }
-.quiz-stat-n.no { color: var(--danger); }
-.quiz-stat-l { font-size: 11px; color: var(--muted); margin-top: 2px; }
-.quiz-topic-badge { display: inline-block; font-size: 11px; color: var(--accent); background: #1a1400; padding: 3px 8px; border-radius: 20px; margin-bottom: 14px; }
-.done-screen { text-align: center; padding: 40px 20px; }
-.done-emoji { font-size: 48px; margin-bottom: 16px; }
-.done-title { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; margin-bottom: 8px; }
-.done-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="app">
   <div class="header">
     <div>
       <div class="header-title">English Practice</div>
-      <div class="header-sub" id="header-sub">Загрузка...</div>
+      <div class="header-sub" id="header-sub">—</div>
     </div>
     <div style="font-size:11px;color:var(--muted);text-align:right;line-height:1.5" id="streak-display"></div>
   </div>
@@ -159,41 +30,48 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 
     <!-- HOME -->
     <div class="screen active" id="screen-home">
-      <div class="home-greeting">Привет!<br><span>Практика 🇬🇧</span></div>
+      <div class="home-greeting">Привіт!<br><span>Практика 🇬🇧</span></div>
       <div class="home-date" id="home-date"></div>
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-num" id="stat-words">400+</div><div class="stat-label">слов собрано</div></div>
-        <div class="stat-card"><div class="stat-num" id="stat-rules">14</div><div class="stat-label">правил грамматики</div></div>
-        <div class="stat-card"><div class="stat-num" id="stat-sents">150+</div><div class="stat-label">предложений</div></div>
-        <div class="stat-card"><div class="stat-num" id="stat-session">0</div><div class="stat-label">сегодня карточек</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat-words">—</div><div class="stat-label">слів зібрано</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat-rules">—</div><div class="stat-label">правил граматики</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat-sents">—</div><div class="stat-label">речень</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat-session">0</div><div class="stat-label">карток сьогодні</div></div>
       </div>
-      <div class="section-title">Начать практику</div>
+      <div class="section-title">Почати практику</div>
       <div class="quick-btns">
         <div class="quick-btn" onclick="goTo('flashcards')">
           <div class="quick-btn-left">
             <div class="quick-btn-icon y">🗂</div>
-            <div><div class="quick-btn-text">Flashcards</div><div class="quick-btn-sub">Слова и конструкции</div></div>
+            <div><div class="quick-btn-text">Flashcards</div><div class="quick-btn-sub">Слова та конструкції</div></div>
           </div>
           <div class="arrow">›</div>
         </div>
         <div class="quick-btn" onclick="goTo('sentences')">
           <div class="quick-btn-left">
             <div class="quick-btn-icon b">✍️</div>
-            <div><div class="quick-btn-text">Перевод предложений</div><div class="quick-btn-sub">150+ предложений из уроков</div></div>
+            <div><div class="quick-btn-text">Переклад речень</div><div class="quick-btn-sub" id="home-sents-sub">речень з уроків</div></div>
           </div>
           <div class="arrow">›</div>
         </div>
         <div class="quick-btn" onclick="goTo('grammar')">
           <div class="quick-btn-left">
             <div class="quick-btn-icon g">📚</div>
-            <div><div class="quick-btn-text">Правила</div><div class="quick-btn-sub">14 тем с примерами</div></div>
+            <div><div class="quick-btn-text">Правила</div><div class="quick-btn-sub" id="home-rules-sub">тем з прикладами</div></div>
           </div>
           <div class="arrow">›</div>
         </div>
         <div class="quick-btn" onclick="goTo('quiz')">
           <div class="quick-btn-left">
             <div class="quick-btn-icon r">⚡️</div>
-            <div><div class="quick-btn-text">Quiz</div><div class="quick-btn-sub">Проверь себя</div></div>
+            <div><div class="quick-btn-text">Quiz</div><div class="quick-btn-sub">Перевір себе</div></div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="quick-btn" onclick="goTo('speaking')">
+          <div class="quick-btn-left">
+            <div class="quick-btn-icon" style="background:#1a002a;color:#c4a3e8">🎤</div>
+            <div><div class="quick-btn-text">Speaking</div><div class="quick-btn-sub">Питання для розмовної практики</div></div>
           </div>
           <div class="arrow">›</div>
         </div>
@@ -213,7 +91,7 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
           <div class="card-face card-front">
             <div class="card-word" id="fc-word">—</div>
             <div class="card-hint" id="fc-hint"></div>
-            <div class="card-tap">нажми чтобы увидеть перевод</div>
+            <div class="card-tap">натисни щоб побачити переклад</div>
           </div>
           <div class="card-face card-back">
             <div class="card-translation" id="fc-trans">—</div>
@@ -222,13 +100,13 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
         </div>
       </div>
       <div class="fc-actions">
-        <button class="btn bad" onclick="markCard(false)">↩ Повторить</button>
+        <button class="btn bad" onclick="markCard(false)">↩ Повторити</button>
         <button class="btn good" onclick="markCard(true)">✓ Знаю</button>
-        <button class="btn full" onclick="shuffleCards()">Перемешать колоду</button>
+        <button class="btn full" onclick="shuffleCards()">Перемішати колоду</button>
       </div>
       <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);padding-top:4px">
         <span>👍 <span id="fc-known">0</span> знаю</span>
-        <span>🔄 <span id="fc-repeat">0</span> повторить</span>
+        <span>🔄 <span id="fc-repeat">0</span> повторити</span>
       </div>
     </div>
 
@@ -237,47 +115,70 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
       <div class="filter-chips" id="sent-filters"></div>
       <div class="fc-meta" style="margin-bottom:14px">
         <span class="fc-count" id="sent-count">1 / 1</span>
-        <span style="font-size:12px;color:var(--muted)" id="sent-done-count">выполнено: 0</span>
+        <span style="font-size:12px;color:var(--muted)" id="sent-done-count">виконано: 0</span>
       </div>
       <div class="sent-card">
         <div class="sent-badge" id="sent-badge">Set 1</div>
-        <div class="sent-ru" id="sent-ru">Загрузка...</div>
+        <div class="sent-ru" id="sent-ru">Завантаження...</div>
         <div class="sent-en" id="sent-en"></div>
       </div>
       <div class="sent-actions">
-        <button class="btn primary" style="flex:1" onclick="showSentAnswer()">Показать ответ</button>
-        <button class="btn" style="flex:1" onclick="nextSent()">Следующее →</button>
+        <button class="btn primary" style="flex:1" onclick="showSentAnswer()">Показати відповідь</button>
+        <button class="btn" style="flex:1" onclick="nextSent()">Наступне →</button>
       </div>
     </div>
 
     <!-- GRAMMAR -->
     <div class="screen" id="screen-grammar">
-      <div class="section-title" style="margin-bottom:16px">Правила грамматики</div>
-      <div class="grammar-list" id="grammar-list"></div>
+      <div class="section-title" style="margin-bottom:16px">Правила граматики</div>
+      <div id="grammar-list"></div>
     </div>
 
     <!-- QUIZ -->
     <div class="screen" id="screen-quiz">
+      <div class="filter-chips" id="quiz-filters" style="margin-bottom:12px"></div>
       <div class="quiz-score">
         <div class="quiz-stat"><div class="quiz-stat-n ok" id="q-right">0</div><div class="quiz-stat-l">правильно</div></div>
-        <div class="quiz-stat"><div class="quiz-stat-n no" id="q-wrong">0</div><div class="quiz-stat-l">ошибок</div></div>
-        <div class="quiz-stat"><div class="quiz-stat-n" id="q-left">0</div><div class="quiz-stat-l">осталось</div></div>
+        <div class="quiz-stat"><div class="quiz-stat-n no" id="q-wrong">0</div><div class="quiz-stat-l">помилок</div></div>
+        <div class="quiz-stat"><div class="quiz-stat-n" id="q-left">0</div><div class="quiz-stat-l">залишилось</div></div>
       </div>
       <div id="quiz-body">
         <div class="quiz-topic-badge" id="q-topic"></div>
         <div class="quiz-q" id="q-question"></div>
         <div class="quiz-opts" id="q-opts"></div>
         <div class="quiz-note" id="q-note"></div>
-        <button class="btn primary full" id="q-next-btn" onclick="nextQuiz()" style="display:none">Следующий вопрос →</button>
+        <button class="btn primary full" id="q-next-btn" onclick="nextQuiz()" style="display:none">Наступне питання →</button>
       </div>
       <div id="quiz-done" style="display:none">
         <div class="done-screen">
           <div class="done-emoji">🎉</div>
           <div class="done-title" id="done-title">Готово!</div>
           <div class="done-sub" id="done-sub"></div>
-          <button class="btn primary" onclick="resetQuiz()">Пройти заново</button>
+          <button class="btn primary" onclick="resetQuiz()">Пройти знову</button>
         </div>
       </div>
+    </div>
+
+    <!-- SPEAKING -->
+    <div class="screen" id="screen-speaking">
+      <div class="filter-chips" id="sp-filters"></div>
+      <div class="fc-meta" style="margin-bottom:14px">
+        <span class="fc-count" id="sp-count">1 / 1</span>
+        <span class="fc-topic" id="sp-category">—</span>
+      </div>
+      <div class="sent-card" style="margin-bottom:14px">
+        <div class="sp-question" id="sp-question" style="font-size:19px;font-weight:600;line-height:1.4;margin-bottom:16px;color:var(--text)"></div>
+        <div class="sent-en show" id="sp-example-wrap" style="display:none">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px">Приклад відповіді</div>
+          <div id="sp-example" style="font-style:italic;line-height:1.6"></div>
+        </div>
+      </div>
+      <div id="sp-tips" style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px"></div>
+      <div class="sent-actions">
+        <button class="btn primary" style="flex:1" id="sp-show-tips" onclick="showSpTips()">Підказки →</button>
+        <button class="btn" style="flex:1" onclick="nextSp()">Наступне →</button>
+      </div>
+      <button class="btn full" style="margin-top:8px" onclick="shuffleSp()">Перемішати</button>
     </div>
 
   </div>
@@ -285,15 +186,15 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
   <div class="nav">
     <button class="nav-btn active" id="nav-home" onclick="goTo('home')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
-      Главная
+      Головна
     </button>
     <button class="nav-btn" id="nav-flashcards" onclick="goTo('flashcards')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-      Карточки
+      Картки
     </button>
     <button class="nav-btn" id="nav-sentences" onclick="goTo('sentences')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-      Перевод
+      Переклад
     </button>
     <button class="nav-btn" id="nav-grammar" onclick="goTo('grammar')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
@@ -302,586 +203,11 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
   </div>
 </div>
 
+<script src="js/data.js"></script>
+<script src="js/speaking.js"></script>
+<script src="js/app.js"></script>
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
-
-const VOCAB = [
-  // Adjectives — emotional states
-  {w:"scared",t:"испуганный (в моменте)",e:"I'm scared — when something frightens you right now.",topic:"Прилагательные"},
-  {w:"afraid",t:"боюсь / боящийся",e:"I'm afraid he can be late tomorrow.",topic:"Прилагательные"},
-  {w:"arrogant",t:"высокомерный",e:"She was too arrogant and never smiled at anyone.",topic:"Прилагательные"},
-  {w:"disappointed",t:"разочарованный",e:"We are disappointed in you.",topic:"Прилагательные"},
-  {w:"frustrated",t:"расстроенный / раздражённый",e:"He was too frustrated to continue.",topic:"Прилагательные"},
-  {w:"annoyed",t:"раздражённый",e:"I was annoyed by his phone call.",topic:"Прилагательные"},
-  {w:"satisfied",t:"довольный / удовлетворённый",e:"He was very satisfied with the results.",topic:"Прилагательные"},
-  {w:"concerned",t:"обеспокоенный",e:"I am very concerned about his results.",topic:"Прилагательные"},
-  {w:"reliable",t:"надёжный",e:"She is very reliable and always keeps her word.",topic:"Прилагательные"},
-  {w:"responsible",t:"ответственный",e:"Everyone thinks you are a very responsible person.",topic:"Прилагательные"},
-  {w:"hypocritical",t:"лицемерный",e:"I punished them for their hypocrisy.",topic:"Прилагательные"},
-  {w:"conceited",t:"самодовольный",e:"She became too conceited and rude.",topic:"Прилагательные"},
-  {w:"cheerful",t:"жизнерадостный",e:"They are very brave and cheerful.",topic:"Прилагательные"},
-  {w:"selfish",t:"эгоистичный",e:"He refused to help her because she is too selfish.",topic:"Прилагательные"},
-  {w:"pale",t:"бледный",e:"Everyone was very pale because they were afraid.",topic:"Прилагательные"},
-  {w:"slim",t:"стройный",e:"She is slim and good-looking.",topic:"Прилагательные"},
-  {w:"gorgeous",t:"великолепный / красивый",e:"She looks gorgeous in that dress.",topic:"Прилагательные"},
-  // Verbs + Infinitive
-  {w:"pretend to",t:"притворяться",e:"He pretended to be sick.",topic:"Глаголы + инфинитив"},
-  {w:"decide to",t:"решить (принять решение)",e:"She decided to leave early.",topic:"Глаголы + инфинитив"},
-  {w:"refuse to",t:"отказаться",e:"He refused to help her.",topic:"Глаголы + инфинитив"},
-  {w:"agree to",t:"согласиться",e:"They agreed to come.",topic:"Глаголы + инфинитив"},
-  {w:"fail to",t:"не получиться / не суметь",e:"He failed to pass the exam.",topic:"Глаголы + инфинитив"},
-  {w:"manage to",t:"суметь сделать (удалось)",e:"She managed to finish on time.",topic:"Глаголы + инфинитив"},
-  {w:"hope to",t:"надеяться",e:"I hope to see you soon.",topic:"Глаголы + инфинитив"},
-  {w:"plan to",t:"планировать",e:"We plan to travel next month.",topic:"Глаголы + инфинитив"},
-  {w:"try to",t:"пытаться",e:"She tried to be calm.",topic:"Глаголы + инфинитив"},
-  {w:"forget to",t:"забыть (сделать)",e:"She forgot to call him.",topic:"Глаголы + инфинитив"},
-  {w:"learn to",t:"научиться",e:"He taught her to swim.",topic:"Глаголы + инфинитив"},
-  // General verbs
-  {w:"admire for",t:"восхищаться (чем-то)",e:"He admires her for her beauty and kindness.",topic:"Глаголы общие"},
-  {w:"blame for",t:"винить / обвинять",e:"I don't blame you for this.",topic:"Глаголы общие"},
-  {w:"rely on",t:"полагаться на",e:"My colleagues rely on me.",topic:"Глаголы общие"},
-  {w:"count on",t:"рассчитывать на",e:"I count on you.",topic:"Глаголы общие"},
-  {w:"complain about",t:"жаловаться на",e:"Nobody ever complains about their work.",topic:"Глаголы общие"},
-  {w:"envy",t:"завидовать",e:"I envy you — you are so lucky.",topic:"Глаголы общие"},
-  {w:"wink at",t:"подмигивать",e:"She smiled and winked at him.",topic:"Глаголы общие"},
-  {w:"punish for",t:"наказать за",e:"I punished them for their hypocrisy.",topic:"Глаголы общие"},
-  {w:"stare at",t:"уставиться на",e:"Everyone stared at him because of his new suit.",topic:"Глаголы общие"},
-  {w:"divorce",t:"развестись",e:"She will divorce him because she doesn't love him.",topic:"Глаголы общие"},
-  {w:"boast about",t:"хвастаться",e:"He always boasts about his car.",topic:"Глаголы общие"},
-  {w:"investigate",t:"расследовать / исследовать",e:"They investigated the case for months.",topic:"Глаголы общие"},
-  {w:"assess",t:"оценивать",e:"We need to assess the situation.",topic:"Глаголы общие"},
-  {w:"solve",t:"решать (проблему)",e:"We need to solve this problem quickly.",topic:"Глаголы общие"},
-  // Constructions
-  {w:"would like",t:"хотелось бы",e:"He would like to be here with us.",topic:"Конструкции"},
-  {w:"wouldn't like",t:"не хотелось бы",e:"She wouldn't like to know too much.",topic:"Конструкции"},
-  {w:"be going to",t:"собираться (сделать)",e:"I am going to travel next week.",topic:"Конструкции"},
-  {w:"in order to",t:"чтобы",e:"He works hard in order to earn well.",topic:"Конструкции"},
-  {w:"in order not to",t:"чтобы не",e:"She took a taxi in order not to be late.",topic:"Конструкции"},
-  {w:"like the way",t:"нравится, как...",e:"I like the way she teaches English.",topic:"Конструкции"},
-  {w:"know how to",t:"знаю, как...",e:"Do you know how to drive?",topic:"Конструкции"},
-  {w:"so am I / so do I",t:"я тоже (после утвердительного)",e:"I am tired. — So am I.",topic:"Конструкции"},
-  {w:"neither do I / neither am I",t:"я тоже нет (после отрицательного)",e:"She doesn't smoke. — Neither do I.",topic:"Конструкции"},
-  // Connectors
-  {w:"both … and …",t:"и … и …",e:"She both sings and dances well.",topic:"Коннекторы"},
-  {w:"either … or …",t:"или … или …",e:"Either you go or I go.",topic:"Коннекторы"},
-  {w:"neither … nor …",t:"ни … ни …",e:"He has neither money nor time.",topic:"Коннекторы"},
-  {w:"not only … but also …",t:"не только … но и …",e:"He is not only responsible but also kind.",topic:"Коннекторы"},
-  {w:"frankly speaking",t:"откровенно говоря",e:"Frankly speaking, I was not ready.",topic:"Коннекторы"},
-  {w:"the matter is that",t:"дело в том, что",e:"The matter is that we don't have enough time.",topic:"Коннекторы"},
-  {w:"nevertheless",t:"тем не менее",e:"Nevertheless, he helped us.",topic:"Коннекторы"},
-  {w:"besides",t:"кроме того",e:"Besides, they often travel together.",topic:"Коннекторы"},
-  {w:"according to",t:"по словам / согласно",e:"According to him, we will be late.",topic:"Коннекторы"},
-  {w:"thanks to",t:"благодаря",e:"Thanks to him, she eats less bread.",topic:"Коннекторы"},
-  {w:"because of",t:"из-за",e:"Because of the rain, we stayed home.",topic:"Коннекторы"},
-  {w:"as for",t:"что касается",e:"As for me, I prefer tea.",topic:"Коннекторы"},
-  {w:"unlike",t:"в отличие от",e:"Unlike her sister, she is very quiet.",topic:"Коннекторы"},
-  // Nouns
-  {w:"solution",t:"решение (задачи / проблемы)",e:"We need an efficient solution.",topic:"Существительные"},
-  {w:"gratitude",t:"благодарность",e:"He expressed his gratitude.",topic:"Существительные"},
-  {w:"concern",t:"беспокойство / тревога",e:"My main concern is that he will be very busy.",topic:"Существительные"},
-  // IT vocab
-  {w:"wrap / unwrap",t:"обёртка / разворачивать (данные)",e:"We need to wrap the data before sending.",topic:"IT"},
-  {w:"an efficient solution",t:"эффективное решение",e:"This is an efficient solution to the problem.",topic:"IT"},
-  {w:"in accordance with",t:"в соответствии с",e:"We act in accordance with the requirements.",topic:"IT"},
-  // Confusable
-  {w:"SOAP",t:"мыло (не суп!)",e:"I need soap to wash my hands.",topic:"Похожие слова"},
-  {w:"SOUP",t:"суп (не мыло!)",e:"She made delicious soup for dinner.",topic:"Похожие слова"},
-];
-
-const SENTENCES = [
-  {ru:"Я думаю, я буду на работе к 8 и я не опоздаю.",en:"I think I will be at work by 8 and I won't be late.",set:"Set 1"},
-  {ru:"Никто не скучает по нему, потому что никто не любит его.",en:"Nobody misses him because nobody likes him.",set:"Set 1"},
-  {ru:"Он хотел бы быть здесь, и он хотел бы помочь нам.",en:"He would like to be here and he would like to help us.",set:"Set 1"},
-  {ru:"Она бы не хотела слишком много знать, но она хотела бы быть умной.",en:"She wouldn't like to know too much but she would like to be smart.",set:"Set 1"},
-  {ru:"Мне не хотелось бы видеть тебя, потому что ты мне не нравишься.",en:"I wouldn't like to see you because I don't like you.",set:"Set 1"},
-  {ru:"Мой приятель часто смотрел на свою соседку, и он восхищался ею.",en:"My friend often looked at his neighbour and admired her.",set:"Set 1"},
-  {ru:"Никто никогда не будет улыбаться и подмигивать ей на уроке.",en:"Nobody will ever smile and wink at her during the lesson.",set:"Set 1"},
-  {ru:"Она была слишком высокомерная и никогда никому не улыбалась.",en:"She was too arrogant and never smiled at anyone.",set:"Set 2"},
-  {ru:"Мы разочарованы в вас, поэтому мы не хотели бы следовать вашим инструкциям.",en:"We are disappointed in you, so we wouldn't like to follow your instructions.",set:"Set 2"},
-  {ru:"У нее не было необходимого опыта, поэтому они не наняли её.",en:"She didn't have the necessary experience, so they didn't hire her.",set:"Set 2"},
-  {ru:"Он восхищается ей за ее красоту и доброту, кроме того он гордится ей.",en:"He admires her for her beauty and kindness, besides he is proud of her.",set:"Set 2"},
-  {ru:"Я наказал их за лицемерие, поэтому они ненавидят меня.",en:"I punished them for their hypocrisy, so they hate me.",set:"Set 2"},
-  {ru:"Он откажется помогать ей, потому что она слишком эгоистичная.",en:"He will refuse to help her because she is too selfish.",set:"Set 2"},
-  {ru:"Я не виню вас за легкомыслие. Дело в том, что у вас недостаточно терпения.",en:"I don't blame you for your frivolity. The matter is that you don't have enough patience.",set:"Set 2"},
-  {ru:"Откровенно говоря, я не был готов к этому, поэтому я был раздражен его звонком.",en:"Frankly speaking, I was not ready for it, so I was annoyed by his call.",set:"Set 2"},
-  {ru:"Она забыла ответить ему, потому что она была очень занята.",en:"She forgot to answer him because she was very busy.",set:"Set 3"},
-  {ru:"У него больше нет терпения — он слишком разочарован в ней.",en:"He has no patience left — he is too disappointed in her.",set:"Set 3"},
-  {ru:"Я рассчитываю на вас. Все говорят, что вы очень ответственный человек.",en:"I count on you. Everyone says you are a very responsible person.",set:"Set 3"},
-  {ru:"Никто никогда не жалуется по поводу своей работы, потому что все очень успешные.",en:"Nobody ever complains about their work because everyone is very successful.",set:"Set 3"},
-  {ru:"Подруга моей мамы отказалась покупать новую машину своему сыну, потому что он ленивый.",en:"My mother's friend refused to buy her son a new car because he is lazy.",set:"Set 3"},
-  {ru:"Они откажут ему, потому что у него не будет ни одного доказательства.",en:"They will refuse him because he won't have a single piece of evidence.",set:"Set 4"},
-  {ru:"Все уставились на него, так как на нем был новый костюм.",en:"Everyone stared at him because he was wearing a new suit.",set:"Set 4"},
-  {ru:"Он был очень взволнован по поводу предстоящей встречи.",en:"He was very excited about the upcoming meeting.",set:"Set 4"},
-  {ru:"У всех было много времени, чтобы подготовиться.",en:"Everyone had plenty of time in order to prepare.",set:"Set 4"},
-  {ru:"В детстве она и пела, и танцевала хорошо, поэтому стала известной певицей.",en:"As a child she both sang and danced well, so she became a famous singer.",set:"Set 5"},
-  {ru:"Он не только ответственный, но и порядочный, поэтому все уважают его.",en:"He is not only responsible but also decent, so everyone respects him.",set:"Set 5"},
-  {ru:"У них нет ни работы, ни денег, потому что они слишком самодовольные.",en:"They have neither a job nor money because they are too conceited.",set:"Set 5"},
-  {ru:"Благодаря ему, она ест мало хлеба. Дело в том, что она влюбилась в него.",en:"Thanks to him she eats little bread. The matter is that she fell in love with him.",set:"Set 5"},
-  {ru:"Я плохо получаюсь на фотографиях. Она тоже.",en:"I don't look good in photos. Neither does she.",set:"Set 6"},
-  {ru:"Она не готова сегодня. Мы тоже. Вчера мы хорошо провели время — мы и пели, и танцевали.",en:"She is not ready today. Neither are we. Yesterday we had a great time — we both sang and danced.",set:"Set 6"},
-  {ru:"Она всегда делает записи во время лекции. Мы тоже. А он не делает.",en:"She always takes notes during the lecture. So do we. But he doesn't.",set:"Set 6"},
-  {ru:"Она часто сравнивает его со своим другом, хотя ему это не нравится. Мне тоже.",en:"She often compares him to her friend, although he doesn't like it. Neither do I.",set:"Set 6"},
-  {ru:"С одной стороны, он обвинил её в своих проблемах, но с другой стороны она всегда была добра к нему.",en:"On the one hand he blamed her for his problems, but on the other hand she was always kind to him.",set:"Set 6"},
-  {ru:"In order to get up early he set the alarm.",en:"Чтобы встать рано, он поставил будильник.",set:"Практика конструкций"},
-  {ru:"In order not to be late she took a taxi.",en:"Чтобы не опоздать, она взяла такси.",set:"Практика конструкций"},
-  {ru:"She decided to go in order to save money.",en:"Она решила пойти, чтобы сэкономить деньги.",set:"Практика конструкций"},
-  {ru:"I like the way she teaches English.",en:"Мне нравится, как она преподаёт английский.",set:"Практика конструкций"},
-  {ru:"Do you know how to drive?",en:"Ты умеешь водить машину?",set:"Практика конструкций"},
-  {ru:"Why did he fail to help?",en:"Почему ему не удалось помочь?",set:"Практика конструкций"},
-  {ru:"She managed to get a day off.",en:"Ей удалось взять выходной.",set:"Практика конструкций"},
-  {ru:"Is she going to have a date?",en:"Она собирается на свидание?",set:"IT интервью"},
-  {ru:"Why did you choose to work in IT?",en:"Почему вы выбрали работу в IT?",set:"IT интервью"},
-  {ru:"What are your current responsibilities?",en:"Каковы ваши текущие обязанности?",set:"IT интервью"},
-  {ru:"Are you trying to learn anything new at the moment?",en:"Вы сейчас стараетесь чему-нибудь учиться?",set:"IT интервью"},
-  {ru:"Where do you see yourself in the future?",en:"Кем вы видите себя в будущем?",set:"IT интервью"},
-];
-
-const GRAMMAR = [
-  {
-    title: "Possessive Case",
-    tag: "Притяжательный падеж",
-    explanation: "Одушевлённые → добавляем 's\nНеодушевлённые → предлог 'of'",
-    examples: [
-      "the girl's name (одушевлённое → 's)",
-      "the cat's tail (одушевлённое → 's)",
-      "the back of the car (неодушевлённое → of)",
-      "the roof of the house (неодушевлённое → of)",
-      "yesterday's newspaper (временное выражение → 's)",
-      "a friend of mine (= my friend)",
-      "a friend of my sister's (= my sister's friend)"
-    ],
-    table: [
-      ["Тип","Правило","Пример"],
-      ["Одушевлённое","+ 's","the girl's name"],
-      ["Неодушевлённое","of + noun","the roof of the house"],
-      ["Организация/место","'s OR of","the world's population"],
-      ["Временное","'s","yesterday's newspaper"],
-    ]
-  },
-  {
-    title: "scared vs afraid",
-    tag: "Лексика",
-    explanation: "scared — страх в конкретный момент (прямо сейчас)\nafraid — в общем, или предположение о будущем",
-    examples: [
-      "I'm scared! (что-то напугало прямо сейчас, во время фильма)",
-      "I'm afraid he can be late tomorrow (предположение — afraid ✓)",
-      "I'm scared of spiders (постоянный страх — оба варианта)",
-      "Are you afraid of the dark? (общее — afraid ✓)"
-    ]
-  },
-  {
-    title: "would like / wouldn't like",
-    tag: "Конструкция",
-    explanation: "Вежливое пожелание. Форма НЕ ИЗМЕНЯЕТСЯ — всегда одинаковая для всех лиц.\n\nwould like = хотелось бы\nwouldn't like = не хотелось бы\nwould you like…? = вопрос",
-    examples: [
-      "He would like to be here. (он — форма та же!)",
-      "She wouldn't like to know too much.",
-      "Would you like to have dinner?",
-      "What would you like to eat?",
-      "Where would you like to go?"
-    ]
-  },
-  {
-    title: "be going to",
-    tag: "Будущее время",
-    explanation: "Выражает ЗАПЛАНИРОВАННОЕ действие, которое точно произойдёт, или действие очевидное из текущей ситуации.\n\nВажно: НЕ используется вместе с will!",
-    examples: [
-      "I am going to travel next week. (план)",
-      "Is she going to be there? (запланировано?)",
-      "I'm not going to be away. (точно не буду)",
-      "It's not going to be cold today. (очевидно из ситуации)",
-      "Are you going to get married? (план)",
-    ]
-  },
-  {
-    title: "in order to / in order not to",
-    tag: "Конструкция",
-    explanation: "in order to = чтобы (цель)\nin order not to = чтобы не (избежать)\n\nМожно сократить до просто 'to'",
-    examples: [
-      "He needs to work a lot in order to earn well.",
-      "She took a taxi in order not to be late.",
-      "She decided to go in order to save money.",
-      "He refused in order not to miss the flight.",
-      "I don't have enough time to convince them. (сокращённая форма)"
-    ]
-  },
-  {
-    title: "like the way / know how to",
-    tag: "Конструкция",
-    explanation: "like the way = нравится, КАК кто-то что-то делает\nknow how to = знать КАК что-то делать (умение)",
-    examples: [
-      "I like the way she teaches English.",
-      "I like the way he works.",
-      "I don't like the way you behave.",
-      "Do you know how to drive?",
-      "Does anybody know how to dance?",
-      "Why doesn't she know how to cook?"
-    ]
-  },
-  {
-    title: "Verbs + Infinitive",
-    tag: "Глаголы + инфинитив",
-    explanation: "Эти глаголы требуют инфинитив (to + verb) следующего глагола:\npretend, decide, refuse, agree, fail, manage, try, hope, plan, learn, forget",
-    examples: [
-      "He pretended to be sick.",
-      "She decided to go to London.",
-      "He refused to study.",
-      "She managed to get a day off.",
-      "Why did he fail to help?",
-      "She forgot to call him.",
-      "He hoped to see her.",
-      "She tried to be calm."
-    ]
-  },
-  {
-    title: "Two Verbs in a Row",
-    tag: "Правило",
-    explanation: "Когда в предложении два глагола подряд:\n→ ПЕРВЫЙ глагол изменяется (принимает все формы времени)\n→ ВТОРОЙ остаётся в базовой форме (инфинитив)",
-    examples: [
-      "She WANTS to go. (wants — изменён, go — базовая форма)",
-      "He DECIDED to leave. (decided — прошедшее, leave — база)",
-      "They REFUSED to answer. (refused — изменён)",
-      "She MANAGED to finish. (managed — изменён)"
-    ]
-  },
-  {
-    title: "Agreement: So / Neither",
-    tag: "Согласие / несогласие",
-    explanation: "После УТВЕРДИТЕЛЬНОГО: So + вспом. глагол + подлежащее (= я тоже)\nПосле ОТРИЦАТЕЛЬНОГО: Neither + вспом. глагол + подлежащее (= я тоже нет)\n\nАльтернатива для отрицательного: ... not ... either",
-    examples: [
-      "I am tired. — So am I. (я тоже устал)",
-      "She is happy. — So am I. (я тоже счастлив)",
-      "She doesn't smoke. — Neither do I. (я тоже не курю)",
-      "He can't swim. — Neither can she. (она тоже не умеет)",
-      "I am not surprised. — I am not surprised either. (альтернатива)",
-      "She is ready. But he isn't. (а он нет — противопоставление)"
-    ]
-  },
-  {
-    title: "Connectors: Both/Either/Neither",
-    tag: "Соединительные слова",
-    explanation: "both … and … = и … и … (оба)\neither … or … = или … или …\nneither … nor … = ни … ни …\nnot only … but also … = не только … но и …",
-    examples: [
-      "She both sings and dances well.",
-      "Either you go or I go.",
-      "He has neither money nor time.",
-      "He is not only responsible but also kind.",
-      "We will both work and study hard next year."
-    ]
-  },
-  {
-    title: "Adjectives + Prepositions",
-    tag: "Прилагательные с предлогами",
-    explanation: "Многие прилагательные требуют определённый предлог. Их нужно запоминать как словосочетания.",
-    examples: [
-      "disappointed IN somebody (разочарован в ком-то)",
-      "satisfied WITH something (доволен чем-то)",
-      "afraid OF something (боится чего-то)",
-      "proud OF somebody (гордится кем-то)",
-      "excited ABOUT something (взволнован чем-то)",
-      "concerned ABOUT something (обеспокоен чем-то)",
-      "ready FOR something (готов к чему-то)"
-    ]
-  },
-  {
-    title: "Question Words Structure",
-    tag: "Вопросы",
-    explanation: "Специальный вопрос:\nWHO / WHAT / WHERE / WHEN / WHY / HOW + вспомогательный глагол + подлежащее + сказуемое",
-    examples: [
-      "Where does she live?",
-      "When did he arrive?",
-      "Why are you late?",
-      "How many books does she have?",
-      "How happy is he?",
-      "Who is coming to the party?"
-    ]
-  },
-  {
-    title: "Reflexive Pronouns",
-    tag: "Возвратные местоимения",
-    explanation: "myself, yourself, himself, herself, itself, ourselves, yourselves, themselves\n\nby oneself = один, самостоятельно (без помощи)",
-    examples: [
-      "She made herself a new suit.",
-      "He bought the car by himself. (сам, без помощи)",
-      "Look at yourself!",
-      "Don't hurt yourself!",
-      "They did it by themselves.",
-      "Help yourself! (угощайтесь)"
-    ]
-  },
-  {
-    title: "Discourse Markers",
-    tag: "Фразы-связки",
-    explanation: "Слова и выражения для связи предложений и структурирования речи",
-    examples: [
-      "Frankly speaking, I was not ready. (откровенно говоря)",
-      "The matter is that we have no time. (дело в том, что)",
-      "On the one hand… on the other hand… (с одной / другой стороны)",
-      "Nevertheless, he helped us. (тем не менее)",
-      "Besides, they often travel. (кроме того)",
-      "According to him, we will be late. (по его словам)",
-      "Thanks to her, everything went well. (благодаря ей)",
-      "Unfortunately, he missed the flight. (к несчастью)"
-    ]
-  }
-];
-
-const QUIZ_DATA = [
-  {q:"Выбери правильный вариант для 'хвост кошки':", opts:["of the cat tail","the cat tail","the cat's tail","cat of tail"], correct:2, note:"Одушевлённые существительные → 's. Кошка — живая, поэтому the cat's tail.", topic:"Possessive Case"},
-  {q:"Как сказать 'крыша дома'?", opts:["the house's roof","the roof of the house","the house roof","roof's of the house"], correct:1, note:"Неодушевлённые существительные → of. Дом — неживой, поэтому the roof OF the house.", topic:"Possessive Case"},
-  {q:"'Я испугался прямо сейчас!' — правильный вариант?", opts:["I'm afraid!","I'm scared!","I afraid!","I'm fear!"], correct:1, note:"scared = страх в конкретный момент (прямо сейчас). afraid = в общем или предположение.", topic:"scared vs afraid"},
-  {q:"'Боюсь, он опоздает завтра' — правильный вариант?", opts:["I'm scared he will be late","I'm afraid he will be late","I am fear he will be late","I'm afraid of he late"], correct:1, note:"afraid = предположение/общее. Для будущих событий или общего страха используем afraid.", topic:"scared vs afraid"},
-  {q:"Выбери правильную форму 'would like' для 'он':", opts:["He wills like to go","He would likes to go","He would like to go","He will likes to go"], correct:2, note:"would like НЕ изменяется! Всегда одна форма для всех лиц: He/She/They — would like.", topic:"would like"},
-  {q:"'Она собирается на вечеринку' (запланировано):", opts:["She will go to the party","She goes to the party","She is going to go to the party","She going to party"], correct:2, note:"be going to = запланированное действие. Is going (she) + to + глагол.", topic:"be going to"},
-  {q:"'Чтобы не опоздать, она взяла такси':", opts:["in order to not late","in order not to be late","not in order to be late","in order to be not late"], correct:1, note:"in order NOT TO + инфинитив = чтобы не. Порядок: not to всегда вместе.", topic:"in order to"},
-  {q:"'Мне нравится, КАК он работает' — как сказать?", opts:["I like how he works","I like that way he works","I like the way he works","I like which he works"], correct:2, note:"like the way = нравится, КАК кто-то что-то делает. Именно 'the way', не 'how'.", topic:"like the way"},
-  {q:"'Ты умеешь водить?' — как спросить?", opts:["Do you know how drive?","Do you know to drive?","Do you know how to drive?","Do you know driving?"], correct:2, note:"know how to + инфинитив. Конструкция: знать КАК что-то делать.", topic:"know how to"},
-  {q:"'Он притворился, что заболел':", opts:["He pretended to be sick","He pretended being sick","He pretend to be sick","He was pretending sick"], correct:0, note:"pretend + to + инфинитив. Это один из глаголов группы Verbs + Infinitive.", topic:"Verbs + Infinitive"},
-  {q:"'Ей удалось взять выходной':", opts:["She managed getting a day off","She managed to get a day off","She managed get a day off","She managed to getting a day off"], correct:1, note:"manage + to + инфинитив. Вся группа: pretend/decide/refuse/agree/fail/manage/try/hope/plan/learn/forget — все с 'to'.", topic:"Verbs + Infinitive"},
-  {q:"'Я тоже устал' после 'She is tired':", opts:["Neither am I","So do I","So am I","I am too also"], correct:2, note:"После утвердительного с be: So am/is/are + I/he/she. She IS tired → So AM I.", topic:"Agreement"},
-  {q:"'Я тоже не курю' после 'She doesn't smoke':", opts:["So do I","Neither do I","I too not","Me neither do"], correct:1, note:"После ОТРИЦАТЕЛЬНОГО: Neither + вспомогательный глагол + подлежащее. Doesn't → do (базовая).", topic:"Agreement"},
-  {q:"'И она поёт, и танцует хорошо':", opts:["Either she sings or dances","Neither she sings nor dances","Both she sings and dances","Not only she sings but also dances"], correct:2, note:"both … and … = и … и … (оба действия выполняются). Не путай с either/or (выбор).", topic:"Connectors"},
-  {q:"'У него нет ни денег, ни времени':", opts:["He has both no money and time","He has either no money or time","He has neither money nor time","He not has money and time"], correct:2, note:"neither … nor … = ни … ни … (ни одного из двух).", topic:"Connectors"},
-  {q:"Первый или второй глагол изменяется в предложении?", opts:["Оба изменяются","Только первый","Только второй","Ни один"], correct:1, note:"Первый глагол берёт на себя всё (изменяется по времени/лицу). Второй остаётся в базовой форме: She WANTS to go.", topic:"Two Verbs"},
-  {q:"'Разочарован В ком-то' — какой предлог?", opts:["disappointed about","disappointed with","disappointed in","disappointed of"], correct:2, note:"disappointed IN somebody. Предлоги с прилагательными нужно запоминать! Satisfied WITH, afraid OF, proud OF.", topic:"Adjectives + Prepositions"},
-  {q:"Reflexive: 'Он купил машину сам, без помощи':", opts:["He bought the car himself","He bought the car by himself","He bought by himself car","He by himself bought car"], correct:1, note:"BY oneself = сам, без чьей-либо помощи. Просто 'himself' означает 'для себя/себе'.", topic:"Reflexive Pronouns"},
-];
-
-// ── STATE ─────────────────────────────────────────────────────────────────────
-let currentScreen = 'home';
-let fcIndex = 0, fcFilter = 'Все', fcKnown = 0, fcRepeat = 0, fcFlipped = false;
-let fcFiltered = [...VOCAB];
-let sentIndex = 0, sentFilter = 'Все', sentDone = 0;
-let sentFiltered = [...SENTENCES];
-let qIndex = 0, qRight = 0, qWrong = 0, qAnswered = false;
-let qShuffled = shuffle([...QUIZ_DATA]);
-let sessionCards = 0;
-
-// ── UTILS ─────────────────────────────────────────────────────────────────────
-function shuffle(arr) { for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr; }
-
-function goTo(screen) {
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('screen-'+screen).classList.add('active');
-  const navBtn = document.getElementById('nav-'+screen);
-  if(navBtn) navBtn.classList.add('active');
-  currentScreen = screen;
-  if(screen==='flashcards') initFlashcards();
-  if(screen==='sentences') initSentences();
-  if(screen==='grammar') initGrammar();
-  if(screen==='quiz') renderQuiz();
-  if(screen==='home') renderHome();
-}
-
-// ── HOME ──────────────────────────────────────────────────────────────────────
-function renderHome() {
-  const days = ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
-  const months = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
-  const d = new Date();
-  document.getElementById('home-date').textContent = `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`;
-  document.getElementById('stat-session').textContent = sessionCards;
-}
-
-// ── FLASHCARDS ────────────────────────────────────────────────────────────────
-function initFlashcards() {
-  const topics = ['Все', ...new Set(VOCAB.map(v=>v.topic))];
-  const fc = document.getElementById('fc-filters');
-  fc.innerHTML = topics.map(t=>`<div class="chip ${t===fcFilter?'active':''}" onclick="setFcFilter('${t}')">${t}</div>`).join('');
-  renderFlashcard();
-}
-
-function setFcFilter(f) {
-  fcFilter = f;
-  fcFiltered = f==='Все' ? [...VOCAB] : VOCAB.filter(v=>v.topic===f);
-  fcIndex = 0; fcKnown = 0; fcRepeat = 0;
-  document.querySelectorAll('#fc-filters .chip').forEach(c=>c.classList.toggle('active',c.textContent===f));
-  renderFlashcard();
-}
-
-function renderFlashcard() {
-  if(!fcFiltered.length) return;
-  const v = fcFiltered[fcIndex];
-  document.getElementById('fc-word').textContent = v.w;
-  document.getElementById('fc-hint').textContent = v.topic;
-  document.getElementById('fc-trans').textContent = v.t;
-  document.getElementById('fc-example').textContent = v.e || '';
-  document.getElementById('fc-card').classList.remove('flipped');
-  fcFlipped = false;
-  document.getElementById('fc-count').textContent = `${fcIndex+1} / ${fcFiltered.length}`;
-  document.getElementById('fc-topic-badge').textContent = v.topic;
-  document.getElementById('fc-known').textContent = fcKnown;
-  document.getElementById('fc-repeat').textContent = fcRepeat;
-  document.getElementById('fc-bar').style.width = ((fcIndex/fcFiltered.length)*100)+'%';
-  updateProgress((fcIndex/fcFiltered.length)*100);
-}
-
-function flipCard() {
-  document.getElementById('fc-card').classList.toggle('flipped');
-  fcFlipped = !fcFlipped;
-}
-
-function markCard(known) {
-  sessionCards++;
-  document.getElementById('stat-session').textContent = sessionCards;
-  if(known) fcKnown++; else fcRepeat++;
-  fcIndex = (fcIndex+1) % fcFiltered.length;
-  renderFlashcard();
-}
-
-function shuffleCards() {
-  fcFiltered = shuffle([...fcFiltered]);
-  fcIndex = 0; fcKnown = 0; fcRepeat = 0;
-  renderFlashcard();
-}
-
-// ── SENTENCES ─────────────────────────────────────────────────────────────────
-function initSentences() {
-  const sets = ['Все', ...new Set(SENTENCES.map(s=>s.set))];
-  const sf = document.getElementById('sent-filters');
-  sf.innerHTML = sets.map(s=>`<div class="chip ${s===sentFilter?'active':''}" onclick="setSentFilter('${s}')">${s}</div>`).join('');
-  renderSentence();
-}
-
-function setSentFilter(f) {
-  sentFilter = f;
-  sentFiltered = f==='Все' ? [...SENTENCES] : SENTENCES.filter(s=>s.set===f);
-  sentIndex = 0; sentDone = 0;
-  document.querySelectorAll('#sent-filters .chip').forEach(c=>c.classList.toggle('active',c.textContent===f));
-  renderSentence();
-}
-
-function renderSentence() {
-  if(!sentFiltered.length) return;
-  const s = sentFiltered[sentIndex];
-  document.getElementById('sent-ru').textContent = s.ru;
-  document.getElementById('sent-en').textContent = s.en;
-  document.getElementById('sent-en').classList.remove('show');
-  document.getElementById('sent-badge').textContent = s.set;
-  document.getElementById('sent-count').textContent = `${sentIndex+1} / ${sentFiltered.length}`;
-  document.getElementById('sent-done-count').textContent = `выполнено: ${sentDone}`;
-  updateProgress((sentIndex/sentFiltered.length)*100);
-}
-
-function showSentAnswer() { document.getElementById('sent-en').classList.add('show'); }
-
-function nextSent() {
-  sentDone++;
-  sentIndex = (sentIndex+1) % sentFiltered.length;
-  renderSentence();
-}
-
-// ── GRAMMAR ───────────────────────────────────────────────────────────────────
-function initGrammar() {
-  const list = document.getElementById('grammar-list');
-  if(list.children.length > 0) return;
-  list.innerHTML = GRAMMAR.map((r,i) => `
-    <div class="rule-card">
-      <div class="rule-header" onclick="toggleRule(${i})">
-        <div>
-          <div class="rule-title">${r.title}</div>
-        </div>
-        <span class="rule-tag">${r.tag}</span>
-      </div>
-      <div class="rule-body" id="rule-${i}">
-        <div class="rule-explanation">${r.explanation.replace(/\n/g,'<br>')}</div>
-        ${r.table ? buildTable(r.table) : ''}
-        <div class="rule-examples">
-          ${r.examples.map(e=>`<div class="rule-ex">${highlightEN(e)}</div>`).join('')}
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
-function highlightEN(text) {
-  return text.replace(/([A-Z][A-Z]+)/g, '<em>$1</em>');
-}
-
-function buildTable(rows) {
-  const [head, ...body] = rows;
-  return `<table class="rule-table">
-    <tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>
-    ${body.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}
-  </table>`;
-}
-
-function toggleRule(i) {
-  const body = document.getElementById('rule-'+i);
-  body.classList.toggle('open');
-}
-
-// ── QUIZ ──────────────────────────────────────────────────────────────────────
-function renderQuiz() {
-  document.getElementById('quiz-done').style.display = 'none';
-  document.getElementById('quiz-body').style.display = 'block';
-  if(qIndex >= qShuffled.length) { showQuizDone(); return; }
-  const q = qShuffled[qIndex];
-  qAnswered = false;
-  document.getElementById('q-topic').textContent = q.topic;
-  document.getElementById('q-question').textContent = q.q;
-  document.getElementById('q-note').textContent = q.note;
-  document.getElementById('q-note').classList.remove('show');
-  document.getElementById('q-next-btn').style.display = 'none';
-  document.getElementById('q-right').textContent = qRight;
-  document.getElementById('q-wrong').textContent = qWrong;
-  document.getElementById('q-left').textContent = qShuffled.length - qIndex;
-  updateProgress((qIndex/qShuffled.length)*100);
-  const opts = document.getElementById('q-opts');
-  opts.innerHTML = q.opts.map((o,i)=>`<button class="quiz-opt" onclick="selectQuizOpt(${i})">${o}</button>`).join('');
-}
-
-function selectQuizOpt(i) {
-  if(qAnswered) return;
-  qAnswered = true;
-  const q = qShuffled[qIndex];
-  document.querySelectorAll('.quiz-opt').forEach((el,idx) => {
-    el.classList.add('locked');
-    if(idx===q.correct) el.classList.add('correct');
-    else if(idx===i) el.classList.add('wrong');
-  });
-  if(i===q.correct) qRight++; else qWrong++;
-  document.getElementById('q-right').textContent = qRight;
-  document.getElementById('q-wrong').textContent = qWrong;
-  document.getElementById('q-note').classList.add('show');
-  document.getElementById('q-next-btn').style.display = 'block';
-}
-
-function nextQuiz() {
-  qIndex++;
-  renderQuiz();
-}
-
-function resetQuiz() {
-  qIndex = 0; qRight = 0; qWrong = 0; qAnswered = false;
-  qShuffled = shuffle([...QUIZ_DATA]);
-  document.getElementById('quiz-done').style.display = 'none';
-  document.getElementById('quiz-body').style.display = 'block';
-  renderQuiz();
-}
-
-function showQuizDone() {
-  document.getElementById('quiz-body').style.display = 'none';
-  document.getElementById('quiz-done').style.display = 'block';
-  const pct = Math.round((qRight/qShuffled.length)*100);
-  document.getElementById('done-title').textContent = pct >= 80 ? 'Отлично!' : pct >= 60 ? 'Хорошо!' : 'Продолжай!';
-  document.getElementById('done-sub').textContent = `${qRight} из ${qShuffled.length} правильно (${pct}%)`;
-}
-
-function updateProgress(pct) {
-  document.getElementById('main-progress').style.width = pct+'%';
-}
-
-// ── INIT ──────────────────────────────────────────────────────────────────────
-function init() {
-  const d = new Date();
-  document.getElementById('header-sub').textContent = `${VOCAB.length} слов · ${GRAMMAR.length} правил`;
-  renderHome();
-}
-init();
-</script>
-<script>
-  if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
 </script>
 </body>
 </html>
