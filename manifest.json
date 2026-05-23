@@ -1,0 +1,24 @@
+{
+  "name": "English Practice",
+  "short_name": "English",
+  "description": "Личная база знаний по английскому — слова, правила и предложения из пройденных уроков. Октябрь 2025 — Февраль 2026.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#0f0f0f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["education"],
+  "lang": "ru"
+}
